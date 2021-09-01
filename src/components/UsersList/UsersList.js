@@ -17,29 +17,29 @@ const UsersList = ({users, getUsers}) => {
             return <Loader active inline />
         }
         return (
-            <Card>
-                <Card.Content>
-                    <List divided relaxed>
-                        {users.map((user) => 
-                             <List.Item key={user._id}>
-                             <List.Icon name='user' size='large' verticalAlign='middle' />
-                             <List.Content>
-                                 <List.Header>{user.firstName} {user.lastName}</List.Header>
-                                 <List.Description>Created: {new Date(user.createdAt).toLocaleString()}</List.Description>
-                             </List.Content>
-                             </List.Item>
-                        )}
-                    </List>
-                </Card.Content>
-            </Card>
+            <List divided relaxed>
+                {users.map((user) => 
+                    <List.Item key={user._id}>
+                    <List.Icon name='user' size='large' verticalAlign='middle' />
+                    <List.Content>
+                        <List.Header>{user.firstName} {user.lastName}</List.Header>
+                        <List.Description>Created: {new Date(user.createdAt).toLocaleString()}</List.Description>
+                    </List.Content>
+                    </List.Item>
+                )}
+            </List>
         )
     }
 
     return (
-            <div className='users-list'>
+        <div className='users-list'>
+            <Card>
+            <Card.Content>
                 <SectionTitle text='Users List' iconName='users' />
                 {renderUsersList()}
-            </div>
+            </Card.Content>
+            </Card>
+        </div>
     )
 };
 

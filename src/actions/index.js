@@ -1,4 +1,3 @@
-
 import usersService from '../apis/users.api';
 
 export const getUsers = () => async dispatch => {
