@@ -1,0 +1,26 @@
+@import '../../styles/colors.scss';
+@import '../../styles/mixins.scss';
+
+.app-header {
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    h1 {
+        color: $text-primary-black;
+        font-weight: normal;
+        font-size: 46px;
+        font-family: 'Permanent Marker', cursive;
+        text-transform: uppercase;
+    }
+}
+
+@include mobile {
+    .app-header {
+        padding: 7px 0px;
+       background-color: $text-primary-black;
+        h1 {
+            font-size: 36px;
+            color: $text-secondary-white;
+        }
+    }
+}

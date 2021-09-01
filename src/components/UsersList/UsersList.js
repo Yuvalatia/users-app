@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Loader, Card, List } from 'semantic-ui-react';
 
 import { getUsers } from '../../actions';
+import { SectionTitle } from '..';
 import './UsersList.scss';
 
 const UsersList = ({users, getUsers}) => {
@@ -16,34 +17,30 @@ const UsersList = ({users, getUsers}) => {
             return <Loader active inline />
         }
         return (
-            <div className='users-list'>
-                <Card>
-                    <Card.Content>
-                        <List divided relaxed>
-                            <List.Item>
-                            <List.Icon name='user' size='large' verticalAlign='middle' />
-                            <List.Content>
-                                <List.Header >Yuval Atia</List.Header>
-                                <List.Description>Created: </List.Description>
-                            </List.Content>
-                            </List.Item>
-                            <List.Item>
-                            <List.Icon name='user' size='large' verticalAlign='middle' />
-                            <List.Content>
-                                <List.Header >Yuval Atia</List.Header>
-                                <List.Description>Created: </List.Description>
-                            </List.Content>
-                            </List.Item>
-                        </List>
-                    </Card.Content>
-                </Card>
-                
-                <p>{users.length}</p>
-            </div>
+            <Card>
+                <Card.Content>
+                    <List divided relaxed>
+                        {users.map((user) => 
+                             <List.Item key={user._id}>
+                             <List.Icon name='user' size='large' verticalAlign='middle' />
+                             <List.Content>
+                                 <List.Header>{user.firstName} {user.lastName}</List.Header>
+                                 <List.Description>Created: {new Date(user.createdAt).toLocaleString()}</List.Description>
+                             </List.Content>
+                             </List.Item>
+                        )}
+                    </List>
+                </Card.Content>
+            </Card>
         )
     }
 
-    return renderUsersList();
+    return (
+            <div className='users-list'>
+                <SectionTitle text='Users List' iconName='users' />
+                {renderUsersList()}
+            </div>
+    )
 };
 
 const mapStateToProps = ({users}) => {
